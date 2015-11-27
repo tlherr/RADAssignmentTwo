@@ -1,1 +1,2 @@
 c:\users\tom\documents\visual studio 2013\Projects\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.exe.config
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.exe.config
