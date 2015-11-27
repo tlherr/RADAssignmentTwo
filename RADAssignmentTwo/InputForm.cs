@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace RADAssignmentTwo
 {
-    public partial class MainForm : Form
+    public partial class InputForm : Form
     {
-        public MainForm()
+        public InputForm()
         {
             InitializeComponent();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
