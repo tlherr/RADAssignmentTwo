@@ -88,6 +88,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(205, 20);
             this.nameTextBox.TabIndex = 3;
+           // this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTextBox_KeyPress);
             // 
             // label4
             // 
@@ -124,6 +125,7 @@
             this.saveButton.TabIndex = 6;
             this.saveButton.Text = "&Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // doneButton
             // 

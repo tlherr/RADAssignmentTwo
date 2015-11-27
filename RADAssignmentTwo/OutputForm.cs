@@ -14,7 +14,7 @@ namespace RADAssignmentTwo
     {
         public OutputForm()
         {
-            InitializeComponent();
+           // InitializeComponent();
         }
     }
 }
