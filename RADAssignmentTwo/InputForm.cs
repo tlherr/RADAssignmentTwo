@@ -44,6 +44,11 @@ namespace RADAssignmentTwo
                          string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," +  hours.ToString();
                         
                         File.AppendAllText(FileName, StringToWrite);
+
+                        nameTextBox.Clear();
+                        numberTextBox.Clear();
+                        hoursTextBox.Clear();
+         
                     }
                     catch(FormatException)
                     {
@@ -57,10 +62,7 @@ namespace RADAssignmentTwo
                     MessageBox.Show("Please Fill Out all the required fields");
                 }
 
-                nameTextBox.Clear();
-                numberTextBox.Clear();
-                hoursTextBox.Clear();
-         
+               
            
 
             
@@ -69,6 +71,15 @@ namespace RADAssignmentTwo
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            OutputForm form = new OutputForm();
+            form.Show();
+            this.Close();
+           
+        
         }
 
    

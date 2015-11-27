@@ -134,6 +134,7 @@
             this.doneButton.TabIndex = 7;
             this.doneButton.Text = "&Done";
             this.doneButton.UseVisualStyleBackColor = true;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
             // exitButton
             // 
