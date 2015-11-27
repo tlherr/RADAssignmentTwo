@@ -41,13 +41,20 @@ namespace RADAssignmentTwo
                     try
                     {
                         int hours = Int32.Parse(hoursTextBox.Text);
-                         string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," +  hours.ToString() + "\n";
-                        
-                        File.AppendAllText(FileName, StringToWrite);
+                        if (hours > 40)
+                        {
+                            MessageBox.Show("Hours must be between 0 and 40");
+                        }
+                        else
+                        {
+                            string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString() + "\n";
 
-                        nameTextBox.Clear();
-                        numberTextBox.Clear();
-                        hoursTextBox.Clear();
+                            File.AppendAllText(FileName, StringToWrite);
+
+                            nameTextBox.Clear();
+                            numberTextBox.Clear();
+                            hoursTextBox.Clear();
+                        }
          
                     }
                     catch(FormatException)
@@ -75,8 +82,8 @@ namespace RADAssignmentTwo
 
         private void doneButton_Click(object sender, EventArgs e)
         {
-            //OutputForm form = new OutputForm("Changeme.txt");
-            //form.Show();
+            OutputForm form = new OutputForm("Changeme.txt");
+            form.Show();
             this.Close();
            
         
