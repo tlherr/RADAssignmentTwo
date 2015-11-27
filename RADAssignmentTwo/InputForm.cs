@@ -25,7 +25,9 @@ namespace RADAssignmentTwo
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-
+            nameTextBox.Clear();
+            numberTextBox.Clear();
+            hoursTextBox.Clear();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -54,10 +56,19 @@ namespace RADAssignmentTwo
                 {
                     MessageBox.Show("Please Fill Out all the required fields");
                 }
+
+                nameTextBox.Clear();
+                numberTextBox.Clear();
+                hoursTextBox.Clear();
          
            
 
             
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
    

@@ -88,7 +88,6 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(205, 20);
             this.nameTextBox.TabIndex = 3;
-           // this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nameTextBox_KeyPress);
             // 
             // label4
             // 
@@ -144,6 +143,7 @@
             this.exitButton.TabIndex = 8;
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // clearButton
             // 
