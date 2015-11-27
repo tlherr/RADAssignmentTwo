@@ -28,12 +28,12 @@ namespace RADAssignmentTwo
             {
                 fileReader = new StreamReader(fileName);
             }
-            catch(ArgumentNullException nullException)
+            catch (ArgumentNullException nullException)
             {
                 MessageBox.Show("No file to read", nullException.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            catch(IOException ioExecption)
+            catch (IOException ioExecption)
             {
                 MessageBox.Show("File Input Error", ioExecption.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -44,7 +44,7 @@ namespace RADAssignmentTwo
             string line = fileReader.ReadLine();
             string[] values = line.Split(',');
 
-            if (fileReader.Peek()!=-1)
+            if (fileReader.Peek() != -1)
             {
                 nextButton.Enabled = false;
             }

@@ -16,8 +16,14 @@ namespace RADAssignmentTwo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InputForm());
-            Application.Run(new OutputForm("text.txt"));
+
+            //open a save file dialog
+            //Get the filename specified by the user
+            //Read/Write to that file
+
+            Application.Run(new InputForm("changethis.txt"));
+            Application.Run(new OutputForm("changethis.txt"));
+
         }
     }
 }
