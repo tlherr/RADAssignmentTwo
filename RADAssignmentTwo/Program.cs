@@ -22,7 +22,7 @@ namespace RADAssignmentTwo
             //Read/Write to that file
 
             Application.Run(new InputForm("changethis.txt"));
-            Application.Run(new OutputForm("changethis.txt"));
+            //Application.Run(new OutputForm("changethis.txt"));
 
         }
     }

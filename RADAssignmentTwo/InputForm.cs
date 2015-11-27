@@ -41,7 +41,7 @@ namespace RADAssignmentTwo
                     try
                     {
                         int hours = Int32.Parse(hoursTextBox.Text);
-                         string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," +  hours.ToString();
+                         string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," +  hours.ToString() + "\n";
                         
                         File.AppendAllText(FileName, StringToWrite);
 
@@ -75,8 +75,8 @@ namespace RADAssignmentTwo
 
         private void doneButton_Click(object sender, EventArgs e)
         {
-            OutputForm form = new OutputForm("Changeme.txt");
-            form.Show();
+            //OutputForm form = new OutputForm("Changeme.txt");
+            //form.Show();
             this.Close();
            
         
