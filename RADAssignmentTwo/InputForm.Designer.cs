@@ -39,7 +39,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.doneButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.inputGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -144,15 +143,6 @@
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // clearButton
             // 
             this.clearButton.Location = new System.Drawing.Point(124, 288);
@@ -161,7 +151,7 @@
             this.clearButton.TabIndex = 10;
             this.clearButton.Text = "&Clear";
             this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.button5_Click);
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // InputForm
             // 
@@ -169,7 +159,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 345);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.saveButton);
@@ -197,7 +186,6 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button doneButton;
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button clearButton;
     }
 }

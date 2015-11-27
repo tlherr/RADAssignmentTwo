@@ -1,2 +1,10 @@
 c:\users\tom\documents\visual studio 2013\Projects\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.exe.config
 C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.exe.config
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.exe
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\bin\Debug\RADAssignmentTwo.pdb
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.csprojResolveAssemblyReference.cache
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.InputForm.resources
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.Properties.Resources.resources
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.csproj.GenerateResource.Cache
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.exe
+C:\Users\nsiu\Documents\GitHub\RADAssignmentTwo\RADAssignmentTwo\obj\Debug\RADAssignmentTwo.pdb
