@@ -1,4 +1,9 @@
-﻿using System;
+﻿/**
+ *  Student Names: Thomas Herr, Nathan Siu
+ *  Date: 11/27/2015
+ *  Purpose: Facilitate input and storage of employee information to text file and parse that file to display results
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +46,7 @@ namespace RADAssignmentTwo
                     try
                     {
                         int hours = Int32.Parse(hoursTextBox.Text);
+
                         if (hours > 40)
                         {
                             MessageBox.Show("Hours must be between 0 and 40");
@@ -57,7 +63,7 @@ namespace RADAssignmentTwo
                         }
          
                     }
-                    catch(FormatException)
+                    catch(FormatException e)
                     {
                         MessageBox.Show("Please enter a number for the hours ");
                     }
