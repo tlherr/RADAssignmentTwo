@@ -18,37 +18,60 @@ namespace RADAssignmentTwo
 {
     public partial class OutputForm : Form
     {
-        private StreamReader fileReader;
+        public StreamReader fileReader { get; private set; }
 
-        public OutputForm(string fileName)
+        const float HOURLY_WAGE = 10.50F;
+
+        public OutputForm()
         {
             InitializeComponent();
 
             try
             {
-                fileReader = new StreamReader(fileName);
+                fileReader = new StreamReader(Program.fileName);
             }
             catch (ArgumentNullException nullException)
             {
                 MessageBox.Show("No file to read", nullException.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                this.Close();
             }
             catch (IOException ioExecption)
             {
                 MessageBox.Show("File Input Error", ioExecption.Message, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                this.Close();
             }
-
 
             //Grab a value from the fileReader to display initially
             string line = fileReader.ReadLine();
             string[] values = line.Split(',');
 
+            displayLine(values[0], values[1], values[2]);
+		
             if (fileReader.Peek() != -1)
             {
                 nextButton.Enabled = false;
             }
 
         }
+
+
+        void displayLine(string Name, string employeeNumber, string hoursWorked)
+        {
+            employeeNameTextBox.Text = Name;
+            employeeNumberTextBox.Text = employeeNumber;
+            hoursWorkedTextBox.Text = hoursWorked;
+
+            try
+            {
+                float hoursWorkedFloat = float.Parse(hoursWorked);
+                weeklyPayTextBox.Text = String.Format("{0:C}", hoursWorkedFloat*HOURLY_WAGE);
+            } 
+            catch (Exception ex) {
+                MessageBox.Show("Unable to parse hours, please ensure a valid number");
+            }
+
+        }
+
+
     }
 }

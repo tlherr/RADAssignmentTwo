@@ -18,14 +18,9 @@ namespace RADAssignmentTwo
 {
     public partial class InputForm : Form
     {
-        public InputForm(string fileName)
+        public InputForm()
         {
             InitializeComponent();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -37,48 +32,48 @@ namespace RADAssignmentTwo
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            string FileName = "EmployeeInformation.txt";
-            
-            
-            
-                if (nameTextBox.Text != String.Empty && numberTextBox.Text != String.Empty && hoursTextBox.Text != String.Empty)
+            if (nameTextBox.Text != String.Empty && numberTextBox.Text != String.Empty && hoursTextBox.Text != String.Empty)
+            {
+                try
                 {
-                    try
+                    int hours = Int32.Parse(hoursTextBox.Text);
+
+                    //Use named constants for these limits
+                    if (hours < 0 || hours > 40)
                     {
-                        int hours = Int32.Parse(hoursTextBox.Text);
+                        MessageBox.Show(this,"Invalid Entry", "Hours must be between 0 and 40", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString() + "\n";
 
-                        if (hours > 40)
-                        {
-                            MessageBox.Show("Hours must be between 0 and 40");
-                        }
-                        else
-                        {
-                            string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString() + "\n";
-
-                            File.AppendAllText(FileName, StringToWrite);
+                        try {
+                            File.AppendAllText(Program.fileName, StringToWrite);
 
                             nameTextBox.Clear();
                             numberTextBox.Clear();
                             hoursTextBox.Clear();
+                        }  
+                        catch(ArgumentNullException argumentNullException)
+                        {
+                            MessageBox.Show(this, "No File to write to", argumentNullException.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+
+                        //catch other exceptions
+                    }
          
-                    }
-                    catch(FormatException e)
-                    {
-                        MessageBox.Show("Please enter a number for the hours ");
-                    }
+                }
+                catch(FormatException formatException)
+                {
+                    MessageBox.Show(this, formatException.Message, "Please enter a number for the hours", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                    
                     
-                }
-                else
-                {
-                    MessageBox.Show("Please Fill Out all the required fields");
-                }
-
-               
-           
-
-            
+            }
+            else
+            {
+                MessageBox.Show("Please Fill Out all the required fields");
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -88,11 +83,10 @@ namespace RADAssignmentTwo
 
         private void doneButton_Click(object sender, EventArgs e)
         {
-            OutputForm form = new OutputForm("Changeme.txt");
+            //Make sure file resource is closed
+            OutputForm form = new OutputForm();
             form.Show();
             this.Close();
-           
-        
         }
 
    
