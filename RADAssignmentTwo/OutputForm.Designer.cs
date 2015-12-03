@@ -88,6 +88,7 @@
             this.nextButton.TabIndex = 5;
             this.nextButton.Text = "&Next";
             this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // exitButton
             // 
@@ -97,6 +98,7 @@
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // employeeNameLabel
             // 

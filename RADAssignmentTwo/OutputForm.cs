@@ -41,17 +41,23 @@ namespace RADAssignmentTwo
                 this.Close();
             }
 
-            //Grab a value from the fileReader to display initially
+            getNextLine();
+
+        }
+
+        string[] getNextLine()
+        {
             string line = fileReader.ReadLine();
             string[] values = line.Split(',');
 
             displayLine(values[0], values[1], values[2]);
-		
-            if (fileReader.Peek() != -1)
+
+            if (fileReader.EndOfStream)
             {
                 nextButton.Enabled = false;
             }
 
+            return values;
         }
 
 
@@ -70,6 +76,18 @@ namespace RADAssignmentTwo
                 MessageBox.Show("Unable to parse hours, please ensure a valid number");
             }
 
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            getNextLine();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            //Release any resources before exiting
+            fileReader.Close();
+            this.Close();
         }
 
 
