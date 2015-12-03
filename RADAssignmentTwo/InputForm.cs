@@ -18,6 +18,9 @@ namespace RADAssignmentTwo
 {
     public partial class InputForm : Form
     {
+        const float MAX_NUM_HOURS = 40;
+        const float MIN_NUM_HOURS = 0;
+        public StreamWriter fileWriter;
         public InputForm()
         {
             InitializeComponent();
@@ -36,10 +39,10 @@ namespace RADAssignmentTwo
             {
                 try
                 {
-                    int hours = Int32.Parse(hoursTextBox.Text);
+                    float hours = float.Parse(hoursTextBox.Text);
 
                     //Use named constants for these limits
-                    if (hours < 0 || hours > 40)
+                    if (hours < MIN_NUM_HOURS || hours > MAX_NUM_HOURS)
                     {
                         MessageBox.Show(this,"Invalid Entry", "Hours must be between 0 and 40", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -48,7 +51,8 @@ namespace RADAssignmentTwo
                         string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString() + "\n";
 
                         try {
-                            File.AppendAllText(Program.fileName, StringToWrite);
+                            //File.AppendAllText(Program.fileName, StringToWrite);
+                            fileWriter.Write(Program.fileName, StringToWrite);
 
                             nameTextBox.Clear();
                             numberTextBox.Clear();
