@@ -26,6 +26,7 @@ namespace RADAssignmentTwo
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
             saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.OverwritePrompt = false;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
