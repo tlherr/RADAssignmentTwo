@@ -24,6 +24,7 @@ namespace RADAssignmentTwo
         public InputForm()
         {
             InitializeComponent();
+            fileWriter = new StreamWriter(Program.fileName,true);
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -52,7 +53,8 @@ namespace RADAssignmentTwo
 
                         try {
                             //File.AppendAllText(Program.fileName, StringToWrite);
-                            fileWriter.Write(Program.fileName, StringToWrite);
+                            fileWriter.Write(StringToWrite);
+                            
 
                             nameTextBox.Clear();
                             numberTextBox.Clear();
@@ -88,7 +90,9 @@ namespace RADAssignmentTwo
         private void doneButton_Click(object sender, EventArgs e)
         {
             //Make sure file resource is closed
+            fileWriter.Close();
             OutputForm form = new OutputForm();
+
             form.Show();
             this.Close();
         }
