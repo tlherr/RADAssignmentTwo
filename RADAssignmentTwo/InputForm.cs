@@ -18,16 +18,19 @@ namespace RADAssignmentTwo
 {
     public partial class InputForm : Form
     {
+        //Instance level variables
         const float MAX_NUM_HOURS = 40;
         const float MIN_NUM_HOURS = 0;
         private StreamWriter fileWriter;
 
+        //Initialize StreamWriter in the constructor. True param allows us to append data vs overwrite
         public InputForm()
         {
             InitializeComponent();
             fileWriter = new StreamWriter(Program.fileName,true);
         }
 
+        //Clear user inputs when requested
         private void clearButton_Click(object sender, EventArgs e)
         {
             nameTextBox.Clear();
@@ -35,18 +38,24 @@ namespace RADAssignmentTwo
             hoursTextBox.Clear();
         }
 
+        //Save user entered data
         private void saveButton_Click(object sender, EventArgs e)
         {
+            //Check to make sure user entered a name
             if (nameTextBox.Text != String.Empty)
             {
+                //Check to make sure user entered and employee number
                 if (numberTextBox.Text != String.Empty)
                 {
+                    //Check to make sure user entered hours worked
                     if(hoursTextBox.Text != String.Empty)
                     {
                         try
                         {
+                            //Remember hours is a float (allows partial values), attempt to parse and catch any exceptions
                             float hours = float.Parse(hoursTextBox.Text);
 
+                            //Make sure the parsed value is within expected range
                             if (hours < MIN_NUM_HOURS || hours > MAX_NUM_HOURS)
                             {
                                 MessageBox.Show(this, "Invalid Entry", "Hours must be between 0 and 40", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -57,6 +66,7 @@ namespace RADAssignmentTwo
                             {
                                 string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString();
 
+                                //If all data is valid try to write it to file, catch and IO exceptions
                                 try
                                 {
                                     fileWriter.WriteLine(StringToWrite);
@@ -97,17 +107,20 @@ namespace RADAssignmentTwo
             }
         }
 
+        //Form closing event handler
         void InputForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             fileWriter.Close();
         }
 
+        //Exit button event handler
         private void exitButton_Click(object sender, EventArgs e)
         {
             fileWriter.Close();
             Application.Exit();
         }
 
+        //Done button event handler
         private void doneButton_Click(object sender, EventArgs e)
         {
             //Make sure file resource is closed
