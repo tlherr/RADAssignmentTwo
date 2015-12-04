@@ -20,7 +20,8 @@ namespace RADAssignmentTwo
     {
         const float MAX_NUM_HOURS = 40;
         const float MIN_NUM_HOURS = 0;
-        public StreamWriter fileWriter;
+        private StreamWriter fileWriter;
+
         public InputForm()
         {
             InitializeComponent();
@@ -36,67 +37,85 @@ namespace RADAssignmentTwo
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (nameTextBox.Text != String.Empty && numberTextBox.Text != String.Empty && hoursTextBox.Text != String.Empty)
+            if (nameTextBox.Text != String.Empty)
             {
-                try
+                if (numberTextBox.Text != String.Empty)
                 {
-                    float hours = float.Parse(hoursTextBox.Text);
-
-                    //Use named constants for these limits
-                    if (hours < MIN_NUM_HOURS || hours > MAX_NUM_HOURS)
+                    if(hoursTextBox.Text != String.Empty)
                     {
-                        MessageBox.Show(this,"Invalid Entry", "Hours must be between 0 and 40", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        try
+                        {
+                            float hours = float.Parse(hoursTextBox.Text);
+
+                            if (hours < MIN_NUM_HOURS || hours > MAX_NUM_HOURS)
+                            {
+                                MessageBox.Show(this, "Invalid Entry", "Hours must be between 0 and 40", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                hoursTextBox.Focus();
+                                hoursTextBox.SelectAll();
+                            }
+                            else
+                            {
+                                string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString();
+
+                                try
+                                {
+                                    fileWriter.WriteLine(StringToWrite);
+
+                                    nameTextBox.Clear();
+                                    numberTextBox.Clear();
+                                    hoursTextBox.Clear();
+                                }
+                                catch (IOException IOException)
+                                {
+                                    MessageBox.Show(this, "Failed to write to specified file", IOException.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                        }
+                        catch (FormatException formatException)
+                        {
+                            MessageBox.Show(this, formatException.Message, "Please enter a valid number for the hours", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            hoursTextBox.Focus();
+                            hoursTextBox.SelectAll();
+                        }
                     }
                     else
                     {
-                        string StringToWrite = nameTextBox.Text + "," + numberTextBox.Text + "," + hours.ToString() + "\n";
-
-                        try {
-                            //File.AppendAllText(Program.fileName, StringToWrite);
-                            fileWriter.Write(StringToWrite);
-                            
-
-                            nameTextBox.Clear();
-                            numberTextBox.Clear();
-                            hoursTextBox.Clear();
-                        }  
-                        catch(ArgumentNullException argumentNullException)
-                        {
-                            MessageBox.Show(this, "No File to write to", argumentNullException.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-
-                        //catch other exceptions
+                        MessageBox.Show("Hours is a required field");
+                        hoursTextBox.Focus();
                     }
-         
                 }
-                catch(FormatException formatException)
+                else
                 {
-                    MessageBox.Show(this, formatException.Message, "Please enter a number for the hours", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Employee Number is a required field");
+                    numberTextBox.Focus();
                 }
-                   
-                    
             }
             else
             {
-                MessageBox.Show("Please Fill Out all the required fields");
+                MessageBox.Show("Name is a required field");
+                nameTextBox.Focus();
             }
+        }
+
+        void InputForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fileWriter.Close();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            fileWriter.Close();
+            Application.Exit();
         }
 
         private void doneButton_Click(object sender, EventArgs e)
         {
             //Make sure file resource is closed
             fileWriter.Close();
+            this.Hide();
             OutputForm form = new OutputForm();
 
             form.Show();
-            this.Close();
         }
-
-   
     }
 }

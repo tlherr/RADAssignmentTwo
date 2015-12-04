@@ -24,16 +24,17 @@ namespace RADAssignmentTwo
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
             saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.FilterIndex = 0;
             saveFileDialog1.RestoreDirectory = true;
             saveFileDialog1.OverwritePrompt = false;
+            
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 fileName = saveFileDialog1.FileName;
 
                 Application.Run(new InputForm());
-                Application.Run(new OutputForm());
+                //Application.Run(new OutputForm());
             }
         }
 

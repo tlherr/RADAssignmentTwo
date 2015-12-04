@@ -167,8 +167,11 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.inputGroupBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "InputForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Input Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InputForm_FormClosing);
             this.inputGroupBox.ResumeLayout(false);
             this.inputGroupBox.PerformLayout();
             this.ResumeLayout(false);

@@ -18,9 +18,8 @@ namespace RADAssignmentTwo
 {
     public partial class OutputForm : Form
     {
-        public StreamReader fileReader { get; private set; }
-
         const float HOURLY_WAGE = 10.50F;
+        private StreamReader fileReader;
 
         public OutputForm()
         {
@@ -41,23 +40,40 @@ namespace RADAssignmentTwo
                 this.Close();
             }
 
-            getNextLine();
+            long fLength = new System.IO.FileInfo(Program.fileName).Length;
 
+            if(fLength==0)
+            {
+                MessageBox.Show(this, "Input File is Empty", "Please enter data and reopen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                fileReader.Close();
+                Application.Exit();
+            }
+            else
+            {
+                getNextLine();
+            }
         }
 
-        string[] getNextLine()
+        void getNextLine()
         {
-            string line = fileReader.ReadLine();
-            string[] values = line.Split(',');
-
-            displayLine(values[0], values[1], values[2]);
-
-            if (fileReader.EndOfStream)
+            try
             {
-                nextButton.Enabled = false;
-            }
+                string line = fileReader.ReadLine();
 
-            return values;
+                string[] values = line.Split(',');
+
+                displayLine(values[0], values[1], values[2]);
+
+                if (fileReader.EndOfStream)
+                {
+                    nextButton.Enabled = false;
+                    MessageBox.Show(this, "No more employee records to display", "All Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(IOException ioExecption)
+            {
+                MessageBox.Show(this, ioExecption.Message, "Please check data file for errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -83,13 +99,17 @@ namespace RADAssignmentTwo
             getNextLine();
         }
 
+        void OutputForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fileReader.Close();
+        }
+
         private void exitButton_Click(object sender, EventArgs e)
         {
             //Release any resources before exiting
             fileReader.Close();
             this.Close();
+            Application.Exit();
         }
-
-
     }
 }

@@ -56,6 +56,7 @@
             // 
             this.employeeNameTextBox.Location = new System.Drawing.Point(190, 81);
             this.employeeNameTextBox.Name = "employeeNameTextBox";
+            this.employeeNameTextBox.ReadOnly = true;
             this.employeeNameTextBox.Size = new System.Drawing.Size(198, 20);
             this.employeeNameTextBox.TabIndex = 1;
             // 
@@ -63,6 +64,7 @@
             // 
             this.employeeNumberTextBox.Location = new System.Drawing.Point(190, 127);
             this.employeeNumberTextBox.Name = "employeeNumberTextBox";
+            this.employeeNumberTextBox.ReadOnly = true;
             this.employeeNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.employeeNumberTextBox.TabIndex = 2;
             // 
@@ -70,6 +72,7 @@
             // 
             this.hoursWorkedTextBox.Location = new System.Drawing.Point(190, 181);
             this.hoursWorkedTextBox.Name = "hoursWorkedTextBox";
+            this.hoursWorkedTextBox.ReadOnly = true;
             this.hoursWorkedTextBox.Size = new System.Drawing.Size(55, 20);
             this.hoursWorkedTextBox.TabIndex = 3;
             // 
@@ -77,6 +80,7 @@
             // 
             this.weeklyPayTextBox.Location = new System.Drawing.Point(190, 231);
             this.weeklyPayTextBox.Name = "weeklyPayTextBox";
+            this.weeklyPayTextBox.ReadOnly = true;
             this.weeklyPayTextBox.Size = new System.Drawing.Size(55, 20);
             this.weeklyPayTextBox.TabIndex = 4;
             // 
@@ -163,8 +167,11 @@
             this.Controls.Add(this.employeeNumberTextBox);
             this.Controls.Add(this.employeeNameTextBox);
             this.Controls.Add(this.titleLabel);
+            this.MaximizeBox = false;
             this.Name = "OutputForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OutputForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OutputForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
